@@ -1,5 +1,8 @@
 #pragma once
+
+#include <Windows.h>
 #include "ServiceBase.h"
+
 class CSampleService : public CServiceBase
 {
 public:
@@ -10,14 +13,5 @@ public:
 		BOOL fCanPauseContinue = FALSE);
 
 	virtual ~CSampleService();
-
-protected:
-
-	virtual void OnStart(DWORD dwArgc, PWSTR *pszArgv);
-
-	virtual void OnStop();
-
-	void ServiceWorkerThread(void);
-
 };
 

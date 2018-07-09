@@ -29,5 +29,9 @@ public:
 		BOOL fCanPauseContinue = FALSE);
 
 	virtual ~CSampleService();
+
+private:
+	BOOL m_fStopping;
+	HANDLE m_hStoppedEvent;
 };
 

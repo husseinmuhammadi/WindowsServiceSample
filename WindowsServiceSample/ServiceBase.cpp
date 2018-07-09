@@ -142,8 +142,10 @@ void CServiceBase::ServiceMain(DWORD dwArgc, LPWSTR *pszArgv)
 	service->m_StatusHandle = RegisterServiceCtrlHandler(
 		service->m_Name, ServiceCtrlHandler);
 
-	if (service->m_StatusHandle == NULL)	
+	if (service->m_StatusHandle == NULL)
+	{
 		throw GetLastError();
+	}
 
 	// Start the service.
 	service->Start(dwArgc, pszArgv);

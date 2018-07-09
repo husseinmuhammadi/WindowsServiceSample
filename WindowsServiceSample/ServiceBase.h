@@ -18,8 +18,6 @@
 
 #pragma once
 
-#include <Windows.h>
-
 class CServiceBase 
 {
 public:

@@ -1,6 +1,9 @@
+#pragma region Includes
 #include "stdafx.h"
 #include <assert.h>
+#include <Windows.h>
 #include "ServiceBase.h"
+#pragma endregion
 
 
 // Initialize the singleton service instance.
@@ -57,9 +60,37 @@ CServiceBase::~CServiceBase()
 {
 }
 
-BOOL CServiceBase::Start(CServiceBase & service)
+//
+//   FUNCTION: CServiceBase::Run(CServiceBase &)
+//
+//   PURPOSE: Register the executable for a service with the Service Control 
+//   Manager (SCM). After you call Run(ServiceBase), the SCM issues a Start 
+//   command, which results in a call to the OnStart method in the service. 
+//   This method blocks until the service has stopped.
+//
+//   PARAMETERS:
+//   * service - the reference to a CServiceBase object. It will become the 
+//     singleton service instance of this service application.
+//
+//   RETURN VALUE: If the function succeeds, the return value is TRUE. If the 
+//   function fails, the return value is FALSE. To get extended error 
+//   information, call GetLastError.
+//
+BOOL CServiceBase::Start(CServiceBase &service)
 {
-	return 0;
+	CServiceBase::service = &service;
+
+	SERVICE_TABLE_ENTRY serviceTable[] =
+	{
+		{ service.m_Name, ServiceMain },
+		{ NULL, NULL }
+	};
+
+	// Connects the main thread of a service process to the service control 
+	// manager, which causes the thread to be the service control dispatcher 
+	// thread for the calling process. This call returns when the service has 
+	// stopped. The process should simply terminate when the call returns.
+	return StartServiceCtrlDispatcher(serviceTable);
 }
 
 void CServiceBase::ServiceMain(DWORD dwArgc, LPWSTR *pszArgv)

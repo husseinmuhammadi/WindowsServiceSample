@@ -3,6 +3,7 @@
 
 #pragma region Includes
 #include "stdafx.h"
+#include <Windows.h>
 #include "ServiceBase.h"
 #include "SampleService.h"
 #include "WindowsServiceSample.h"

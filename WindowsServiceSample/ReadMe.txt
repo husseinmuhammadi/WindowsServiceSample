@@ -38,3 +38,7 @@ AppWizard uses "TODO:" comments to indicate parts of the source code you
 should add to or customize.
 
 /////////////////////////////////////////////////////////////////////////////
+
+
+https://docs.microsoft.com/en-us/windows/desktop/sync/synchronization
+

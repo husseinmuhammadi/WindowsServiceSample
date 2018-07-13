@@ -41,4 +41,5 @@ should add to or customize.
 
 
 https://docs.microsoft.com/en-us/windows/desktop/sync/synchronization
+https://stackoverflow.com/questions/1159012/installing-a-windows-service-on-remote-machine-using-given-username
 
